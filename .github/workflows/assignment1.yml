@@ -1,0 +1,69 @@
+name: Assignment 1 — Playwright UI Tests (SauceDemo)
+
+on:
+  push:
+    paths:
+      - 'assignment1/**'
+      - '.github/workflows/assignment1.yml'
+  pull_request:
+    paths:
+      - 'assignment1/**'
+
+defaults:
+  run:
+    working-directory: assignment1
+
+jobs:
+  playwright-tests:
+    name: Playwright Tests — ${{ matrix.browser }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: assignment1/package.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Run Playwright tests (${{ matrix.browser }})
+        run: npx playwright test --project=${{ matrix.browser }}
+        env:
+          CI: true
+
+      - name: Upload Playwright HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.browser }}
+          path: assignment1/playwright-report/
+          retention-days: 30
+
+      - name: Upload test results (JUnit XML)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: junit-results-${{ matrix.browser }}
+          path: assignment1/test-results/results.xml
+          retention-days: 30
+
+      - name: Upload screenshots on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: failure-screenshots-${{ matrix.browser }}
+          path: assignment1/test-results/
+          retention-days: 7

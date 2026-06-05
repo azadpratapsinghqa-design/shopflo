@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="15" failures="4" errors="0" time="8.835">
+  <testsuite name="Cart — Data-Driven POST (multiple product IDs)" errors="0" failures="4" skipped="0" timestamp="2026-06-05T17:07:23" time="8.807" tests="15">
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=1 (Fjallraven Backpack) creates cart successfully" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=1 (Fjallraven Backpack) creates cart successfully" time="0.381">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=3 (Mens Cotton Jacket) creates cart successfully" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=3 (Mens Cotton Jacket) creates cart successfully" time="0.375">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=7 (White Gold Polished Diamond Ring) creates cart successfully" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=7 (White Gold Polished Diamond Ring) creates cart successfully" time="0.804">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=12 (WD 2TB Green Portable HDD) creates cart successfully" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=12 (WD 2TB Green Portable HDD) creates cart successfully" time="0.384">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=18 (MBJ Womens Solid Short Sleeve) creates cart successfully" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=18 (MBJ Womens Solid Short Sleeve) creates cart successfully" time="1.282">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=1 response schema is valid" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=1 response schema is valid" time="0.875">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=3 response schema is valid" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=3 response schema is valid" time="0.853">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=7 response schema is valid" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=7 response schema is valid" time="0.379">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=12 response schema is valid" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=12 response schema is valid" time="0.385">
+    </testcase>
+    <testcase classname="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=18 response schema is valid" name="Cart — Data-Driven POST (multiple product IDs) POST /carts with productId=18 response schema is valid" time="0.383">
+    </testcase>
+    <testcase classname="Cart — Contract / Schema Snapshot Test GET /carts response shape conforms to baseline contract snapshot" name="Cart — Contract / Schema Snapshot Test GET /carts response shape conforms to baseline contract snapshot" time="1.008">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 400
+    at Object.toBe (/Users/azadpratapsingh/Desktop/Assignment/Assignment_2/tests/cart-datadriven.test.js:61:24)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
+    </testcase>
+    <testcase classname="Cart — Contract / Schema Snapshot Test GET /carts/1 contract: id field is always numeric" name="Cart — Contract / Schema Snapshot Test GET /carts/1 contract: id field is always numeric" time="0.379">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 400
+    at Object.toBe (/Users/azadpratapsingh/Desktop/Assignment/Assignment_2/tests/cart-datadriven.test.js:89:24)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
+    </testcase>
+    <testcase classname="Cart — Contract / Schema Snapshot Test GET /carts/1 contract: products is always an array (never null/undefined)" name="Cart — Contract / Schema Snapshot Test GET /carts/1 contract: products is always an array (never null/undefined)" time="0.377">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 400
+    at Object.toBe (/Users/azadpratapsingh/Desktop/Assignment/Assignment_2/tests/cart-datadriven.test.js:95:24)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
+    </testcase>
+    <testcase classname="Cart — Contract / Schema Snapshot Test POST /carts contract: response always has id, userId, products" name="Cart — Contract / Schema Snapshot Test POST /carts contract: response always has id, userId, products" time="0.384">
+    </testcase>
+    <testcase classname="Cart — Contract / Schema Snapshot Test AJV full schema validation: GET /carts/1 strictly matches cart schema" name="Cart — Contract / Schema Snapshot Test AJV full schema validation: GET /carts/1 strictly matches cart schema" time="0.382">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 400
+    at Object.toBe (/Users/azadpratapsingh/Desktop/Assignment/Assignment_2/tests/cart-datadriven.test.js:115:24)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
