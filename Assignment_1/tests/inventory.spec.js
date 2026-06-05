@@ -94,17 +94,20 @@ test.describe('Inventory — Positive', () => {
 // ── NEGATIVE ──────────────────────────────────────────────────────────────────
 test.describe('Inventory — Negative', () => {
 
-  test('TC-N-013 | problem_user has at least one broken image', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    await loginPage.goto();
-    await loginPage.login('problem_user', 'secret_sauce');
-    await page.waitForURL('**/inventory.html');
+test('TC-N-013 | problem_user sees incorrect product images', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await loginPage.goto();
+  await loginPage.login('problem_user', 'secret_sauce');
+  await page.waitForURL('**/inventory.html');
 
-    const brokenImages = await page.evaluate(() => {
-      const imgs = Array.from(document.querySelectorAll('.inventory_item img'));
-      return imgs.filter(img => !img.naturalWidth).length;
-    });
-    // Known defect: problem_user has broken images
-    expect(brokenImages).toBeGreaterThan(0);
+  // Get all product image src URLs
+  const imageSrcs = await page.evaluate(() => {
+    const imgs = Array.from(document.querySelectorAll('.inventory_item img'));
+    return imgs.map(img => img.src);
   });
+
+  // Known defect: problem_user sees duplicate image URLs (all pointing to same image)
+  const uniqueSrcs = new Set(imageSrcs);
+  expect(uniqueSrcs.size).toBeLessThan(imageSrcs.length);
+});
 });
